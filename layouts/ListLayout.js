@@ -63,7 +63,7 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
                       </time>
                     </dd>
                   </dl>
-                  <div className="space-y-3 xl:col-span-3">
+                  <div className="space-y-5 xl:col-span-3">
                     <div>
                       <h3 className="text-2xl font-bold leading-8 tracking-tight">
                         <Link href={`/blog/${slug}`} className="text-gray-900 dark:text-gray-100">
@@ -76,8 +76,17 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
                         ))}
                       </div>
                     </div>
-                    <div className="prose text-gray-500 max-w-none dark:text-gray-400">
+                    <div className="prose text-gray-600 max-w-none dark:text-gray-400">
                       {summary}
+                    </div>
+                    <div className="text-base font-medium leading-6">
+                      <Link
+                        href={`/blog/${slug}`}
+                        className="text-blue-500 hover:text-blue-600 dark:hover:text-blue-400"
+                        aria-label={`Read "${title}"`}
+                      >
+                        Read more &rarr;
+                      </Link>
                     </div>
                   </div>
                 </article>
@@ -86,11 +95,9 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
           })}
         </ul>
       </div>
-      {pagination &&
-        pagination.totalPages > 1 &&
-        !searchValue && (
-          <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} />
-        )}
+      {pagination && pagination.totalPages > 1 && !searchValue && (
+        <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} />
+      )}
     </>
   )
 }
